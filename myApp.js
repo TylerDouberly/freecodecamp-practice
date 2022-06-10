@@ -1,4 +1,5 @@
 let express = require('express');
+let bodyParser = require('body-parser')
 let app = express();
 console.log("Hello World");
 /*
@@ -6,6 +7,8 @@ app.get("/",(req, res)=>{
   res.send("Hello Express");
 });
 */
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use( function(req,res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
   next();
